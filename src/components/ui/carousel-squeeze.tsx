@@ -290,7 +290,7 @@ export function SqueezeCarousel({
       {...props}
     >
       {controls && count > 1 && (
-        <div className="mb-4 flex justify-end gap-2">
+        <div className="relative z-10 mb-4 flex justify-end gap-3">
           <Arrow back label="Назад" onClick={() => step(-1)} />
           <Arrow label="Вперёд" onClick={() => step(1)} />
         </div>
@@ -458,7 +458,7 @@ function Arrow({ back = false, label, onClick }: { back?: boolean; label: string
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="pill grid size-10 cursor-pointer place-items-center outline-none focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)]"
+      className="pill grid size-12 cursor-pointer touch-manipulation place-items-center outline-none select-none focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)] active:scale-95 md:size-10"
     >
       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
         <path

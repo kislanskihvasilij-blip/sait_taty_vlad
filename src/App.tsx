@@ -13,7 +13,7 @@ import {
 
 import { PaperDrift } from "@/components/paper-drift";
 import { SqueezeCarousel } from "@/components/ui/carousel-squeeze";
-import { CAPTIONS, CHANNEL, LATIN, STYLES, WORKS } from "@/data/content";
+import { CAPTIONS, CHANNEL, LATIN, PROFILE, STYLES, WORKS } from "@/data/content";
 import { useReveal } from "@/hooks/use-reveal";
 
 const STYLE_ICONS = [PenTool, Hexagon, Flame, Skull, Flower2, Feather];
@@ -69,7 +69,7 @@ function Hero() {
             кресты, проросшие лилиями. Всё начинается с чернил на бежевом листе.
           </p>
           <div className="reveal mt-10 flex flex-wrap justify-center gap-3 md:justify-start" style={delay(460)}>
-            <a href={CHANNEL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-[#663af3] px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_rgba(102,58,243,0.45)] transition hover:bg-[#7550f5]">
+            <a href={PROFILE} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full bg-[#663af3] px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_rgba(102,58,243,0.45)] transition hover:bg-[#7550f5]">
               Заказать эскиз <ArrowUpRight className="size-4" />
             </a>
             <a href="#works" className="pill flex items-center gap-2 px-6 py-3 text-sm font-medium">
@@ -107,7 +107,7 @@ function Works() {
         </p>
       </div>
       <div className="reveal relative mt-12" style={delay(300)}>
-        <div aria-hidden className="absolute -inset-x-10 -inset-y-16 bg-[radial-gradient(60%_50%_at_50%_45%,rgba(214,199,168,0.07),transparent_70%)]" />
+        <div aria-hidden className="pointer-events-none absolute -inset-x-10 -inset-y-16 bg-[radial-gradient(60%_50%_at_50%_45%,rgba(214,199,168,0.07),transparent_70%)]" />
         <SqueezeCarousel slides={WORKS} label="Эскизы Владислава" fit="contain" gap={14} radius={4} />
       </div>
     </section>
@@ -251,8 +251,8 @@ function Commission() {
               </li>
             ))}
           </ol>
-          <a href={CHANNEL} target="_blank" rel="noopener noreferrer" className="mt-10 inline-flex items-center gap-2 rounded-full bg-[#663af3] px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_rgba(102,58,243,0.45)] transition hover:bg-[#7550f5]">
-            <Send className="size-4" /> Написать в Telegram
+          <a href={PROFILE} target="_blank" rel="noopener noreferrer" className="mt-10 inline-flex items-center gap-2 rounded-full bg-[#663af3] px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_rgba(102,58,243,0.45)] transition hover:bg-[#7550f5]">
+            <Send className="size-4" /> Написать @DraculaVMP
           </a>
         </div>
       </div>
@@ -266,7 +266,7 @@ function Footer() {
       <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-4 text-sm text-[#9da7ba] md:flex-row">
         <span className="font-display text-base text-[#c7d3ea]">Пустые мысли во тьме 🥀</span>
         <span className="font-mono text-xs tracking-[0.15em] uppercase">© {new Date().getFullYear()} Владислав · тату-эскизы</span>
-        <a href={CHANNEL} target="_blank" rel="noopener noreferrer" className="flicker inline-block py-3 hover:text-white">t.me/ten_sens</a>
+        <a href={PROFILE} target="_blank" rel="noopener noreferrer" className="flicker inline-block py-3 hover:text-white">@DraculaVMP</a>
       </div>
     </footer>
   );

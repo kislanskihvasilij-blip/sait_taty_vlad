@@ -1,6 +1,8 @@
 import type { SqueezeSlide } from "@/components/ui/carousel-squeeze";
 
 export const CHANNEL = "https://t.me/ten_sens";
+/** Vladislav's personal Telegram, for commissions. */
+export const PROFILE = "https://t.me/DraculaVMP";
 const post = (id: number) => `${CHANNEL}/${id}`;
 
 const sketch = (
