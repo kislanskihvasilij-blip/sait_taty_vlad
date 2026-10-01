@@ -252,7 +252,7 @@ function Commission() {
             ))}
           </ol>
           <a href={PROFILE} target="_blank" rel="noopener noreferrer" className="mt-10 inline-flex items-center gap-2 rounded-full bg-[#663af3] px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_rgba(102,58,243,0.45)] transition hover:bg-[#7550f5]">
-            <Send className="size-4" /> Написать @DraculaVMP
+            <Send className="size-4" /> Написать в Telegram
           </a>
         </div>
       </div>
