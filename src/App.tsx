@@ -11,7 +11,10 @@ import {
   Skull,
 } from "lucide-react";
 
+import { AuthorWorld } from "@/components/author-world";
 import { PaperDrift } from "@/components/paper-drift";
+import { TextPortfolio } from "@/components/text-portfolio";
+import { WorkPath } from "@/components/work-path";
 import { SqueezeCarousel } from "@/components/ui/carousel-squeeze";
 import { CAPTIONS, CHANNEL, LATIN, PROFILE, STYLES, WORKS } from "@/data/content";
 import { useReveal } from "@/hooks/use-reveal";
@@ -29,15 +32,18 @@ function Nav() {
         </a>
         <div className="hidden items-center gap-6 text-sm text-[#c7d3ea] md:flex">
           <a href="#works" className="transition hover:text-white">Эскизы</a>
-          <a href="#styles" className="transition hover:text-white">Стили</a>
+          <a href="#world" className="transition hover:text-white">Стиль</a>
+          <a href="#path" className="transition hover:text-white">Путь</a>
           <a href="#about" className="transition hover:text-white">Обо мне</a>
           <a href="#thoughts" className="transition hover:text-white">Мысли</a>
+          <a href="#texts" className="transition hover:text-white">Тексты</a>
         </div>
-        <div className="order-last flex w-full justify-between pb-1 text-[13px] text-[#c7d3ea] md:hidden">
+        <div className="order-last flex w-full justify-between pb-1 text-[12.5px] text-[#c7d3ea] md:hidden">
           <a href="#works" className="py-1.5">Эскизы</a>
-          <a href="#styles" className="py-1.5">Стили</a>
+          <a href="#world" className="py-1.5">Стиль</a>
+          <a href="#path" className="py-1.5">Путь</a>
           <a href="#about" className="py-1.5">Обо мне</a>
-          <a href="#thoughts" className="py-1.5">Мысли</a>
+          <a href="#texts" className="py-1.5">Тексты</a>
         </div>
         <a href={CHANNEL} target="_blank" rel="noopener noreferrer" className="pill flex min-h-10 items-center gap-2 px-4 py-2 text-sm font-medium">
           <Send className="size-3.5" /> Канал
@@ -282,8 +288,11 @@ export default function App() {
         <Hero />
         <Works />
         <Styles />
+        <AuthorWorld />
+        <WorkPath />
         <About />
         <Thoughts />
+        <TextPortfolio />
         <Commission />
       </main>
       <Footer />
