@@ -1,22 +1,39 @@
-import type { WorksWheelItem } from "@/components/ui/works-wheel";
+import type { SqueezeSlide } from "@/components/ui/carousel-squeeze";
 
 export const CHANNEL = "https://t.me/ten_sens";
 const post = (id: number) => `${CHANNEL}/${id}`;
 
+const sketch = (
+  id: string,
+  title: string,
+  description: string,
+  file: string,
+  postId: number,
+): SqueezeSlide => ({
+  id,
+  title,
+  description,
+  image: `/works/${file}.webp`,
+  imageAlt: `Эскиз «${title}»`,
+  action: "Открыть пост",
+  href: post(postId),
+  target: "_blank",
+});
+
 // Sketches from the channel, in the order they were posted.
-export const WORKS: WorksWheelItem[] = [
-  { title: "Дым и Будда", image: "/works/w04.jpg", href: post(37) },
-  { title: "Лилии", image: "/works/w06.jpg", href: post(41) },
-  { title: "Лунный крест", image: "/works/w08.jpg", href: post(48) },
-  { title: "Терновый крест", image: "/works/w09.jpg", href: post(48) },
-  { title: "Neotribal", image: "/works/w10.jpg", href: post(48) },
-  { title: "Лилия и клинок", image: "/works/w11.jpg", href: post(51) },
-  { title: "Звёздный крест", image: "/works/w12.jpg", href: post(52) },
-  { title: "То, что любил", image: "/works/w13.jpg", href: post(53) },
-  { title: "Заключённый в форму", image: "/works/w14.jpg", href: post(54) },
-  { title: "Стрела и корни", image: "/works/w15.jpg", href: post(55) },
-  { title: "Рыба и лотос", image: "/works/w17.jpg", href: post(57) },
-  { title: "Последнее цветение", image: "/works/w18.jpg", href: post(58) },
+export const WORKS: SqueezeSlide[] = [
+  sketch("buddha", "Дым и Будда.", "Отсекать не ради аскезы, а ради ясности: очертания Будды, струйка дыма, мягкий свет.", "w04", 37),
+  sketch("lilies", "Лилии.", "Мои линии не идеальны. Они дрожат, как руки, что их рисовали, — и в этой дрожи вся правда.", "w06", 41),
+  sketch("moon-cross", "Лунный крест.", "Работа над новым стилем: Neotribal и CyberTribal из блокнота.", "w08", 48),
+  sketch("thorn-cross", "Терновый крест.", "Шипы, которые становятся стеблями. Dark Art в чистом чёрном.", "w09", 48),
+  sketch("neotribal", "Neotribal.", "Трайбл, переосмысленный заново: тяжёлые формы и острые окончания.", "w10", 48),
+  sketch("lily-blade", "Лилия и клинок.", "Эксперимент с новым стилем: ботаника, проросшая сквозь трайбл.", "w11", 51),
+  sketch("star-cross", "Звёздный крест.", "Пока работы идут медленно — развиваю стиль. Скоро у каждого рисунка будет своя подпись.", "w12", 52),
+  sketch("loved", "То, что любил.", "Я начал рисовать то, что любил. Закончил тем, от чего хотел отвернуться.", "w13", 53),
+  sketch("form", "Заключённый в форму.", "Я думал, что заключил его в форму. Оказалось — это он держал меня внутри.", "w14", 54),
+  sketch("arrow", "Стрела и корни.", "Стрела пронзила её насквозь. Но вместо того чтобы сломаться, она пустила корни вокруг раны.", "w15", 55),
+  sketch("koi", "Рыба и лотос.", "Стремление… что вы знаете о рыбе, что стремится к лотосу среди неба?", "w17", 57),
+  sketch("last-bloom", "Последнее цветение.", "Что, если смерть — не конец цветения, а его последняя форма?", "w18", 58),
 ];
 
 export const STYLES = [

@@ -7,7 +7,11 @@
     <meta name="description" content="Авторские тату-эскизы Владислава: Trible, Neotribal, Dark Art, ботаника. Наброски из блокнота." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+    <meta name="theme-color" content="#05060f" />
+    <!-- Fonts load without blocking the first paint: on a slow mobile connection
+         the page shows in fallback fonts instead of staying dark. -->
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=UnifrakturMaguntia&display=swap" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=UnifrakturMaguntia&display=swap" /></noscript>
   </head>
   <body>
     <div id="root"></div>
