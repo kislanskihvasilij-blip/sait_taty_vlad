@@ -57,30 +57,21 @@ function Step({ step, index }: { step: PathStep; index: number }) {
       </div>
 
       <div className={cn(isRight ? "md:order-1 md:pr-4" : "md:pl-4")}>
-        {step.image ? (
-          <figure
-            className="reveal-paper paper-sheet lift relative mx-auto w-full max-w-[340px] rounded-[3px] p-3"
-            style={{ ...delay(160), "--tilt": `${isRight ? 5 : -5}deg`, "--rest": `${isRight ? 1.2 : -1.2}deg` } as CSSProperties}
-          >
-            <img
-              src={step.image}
-              alt={`Эскиз: ${step.title}`}
-              width={600}
-              height={800}
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/5] w-full rounded-[2px] object-cover"
-            />
-            <span aria-hidden className="grain-overlay" />
-          </figure>
-        ) : (
-          <blockquote
-            className="reveal-paper relative mx-auto flex aspect-[4/5] w-full max-w-[340px] items-center rounded-[3px] bg-[#0b0a0c] p-8 shadow-[inset_0_0_0_1px_rgba(214,199,168,0.18),0_30px_60px_-24px_rgba(0,0,0,0.9)]"
-            style={{ ...delay(160), "--tilt": "-4deg", "--rest": "0deg" } as CSSProperties}
-          >
-            <p className="font-serif text-[1.6rem] leading-snug text-[#e9dfcb] italic">«{step.quote}»</p>
-          </blockquote>
-        )}
+        <figure
+          className="reveal-paper paper-sheet lift relative mx-auto w-full max-w-[340px] rounded-[3px] p-3"
+          style={{ ...delay(160), "--tilt": `${isRight ? 5 : -5}deg`, "--rest": `${isRight ? 1.2 : -1.2}deg` } as CSSProperties}
+        >
+          <img
+            src={step.image}
+            alt={`Эскиз: ${step.title}`}
+            width={600}
+            height={800}
+            loading="lazy"
+            decoding="async"
+            className="aspect-[4/5] w-full rounded-[2px] object-cover"
+          />
+          <span aria-hidden className="grain-overlay" />
+        </figure>
       </div>
     </li>
   );

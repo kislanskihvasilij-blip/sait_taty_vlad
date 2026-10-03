@@ -71,7 +71,7 @@ function Hero() {
             «Каждая тень здесь — непережитое чувство. Каждая тьма — чей-то вдох».
           </p>
           <p className="reveal mx-auto mt-5 max-w-[480px] text-[15px] leading-relaxed text-[#9da7ba] md:mx-0" style={delay(360)}>
-            Владислав рисует эскизы для татуировок: трайбл, неотрайбл, тёмная ботаника и
+            Я — Владислав. Рисую эскизы для татуировок: Tribal, Neotribal, тёмная ботаника и
             кресты, проросшие лилиями. Всё начинается с чернил на бежевом листе.
           </p>
           <div className="reveal mt-10 flex flex-wrap justify-center gap-3 md:justify-start" style={delay(460)}>
@@ -163,7 +163,7 @@ function About() {
         </h2>
         <p className="reveal mt-6 text-[16px] leading-relaxed text-[#c7d3ea]" style={delay(200)}>
           Меня зовут Владислав. Я рисую тату-эскизы в блокноте: чёрные чернила, бежевая бумага,
-          никаких лишних штрихов. Сейчас работаю над новым стилем на стыке трайбла и ботаники —
+          никаких лишних штрихов. Сейчас работаю над новым стилем на стыке Tribal и ботаники —
           кресты прорастают цветами, а шипы становятся стеблями.
         </p>
         <p className="reveal mt-4 text-[16px] leading-relaxed text-[#9da7ba]" style={delay(260)}>
@@ -248,7 +248,7 @@ function Commission() {
           <ol className="mt-8 space-y-4 text-[15px] text-[#c7d3ea]">
             {[
               "Напишите в Telegram: идея, место на теле, размер.",
-              "Обсуждаем образ и стиль — трайбл, ботаника, dark art.",
+              "Обсуждаем образ и стиль — Tribal, ботаника, Dark Art.",
               "Рисую эскиз от руки и дорабатываю под вас.",
             ].map((step, i) => (
               <li key={step} className="flex gap-4">

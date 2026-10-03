@@ -43,9 +43,8 @@ export interface PathStep {
   title: string;
   text: string;
   meaning: string;
-  /** Sketch from /public/works. No image: the step is shown as a quote card. */
-  image?: string;
-  quote?: string;
+  /** Sketch from /public/works. */
+  image: string;
 }
 
 export const PATH: PathStep[] = [
@@ -68,16 +67,10 @@ export const PATH: PathStep[] = [
     image: "/works/w08.webp",
   },
   {
-    title: "Цветок внутри формы",
-    text: "Органика сталкивается с жёсткой конструкцией — отсюда родилась тема границы и свободы.",
-    meaning: "Мотив клетки, трещин, корней и растений, которые постепенно захватывают форму.",
-    quote: "Живое пытается вырасти там, где для него изначально не было места.",
-  },
-  {
     title: "Геометрия + ботаника",
     text: "Крестовая геометрия, декоративные элементы и цветок собраны в одну композицию.",
     meaning: "Сильнейший приём — столкновение жёсткого и живого.",
-    image: "/works/w12.webp",
+    image: "/works/w18.webp",
   },
   {
     title: "Цветок и небеса",
