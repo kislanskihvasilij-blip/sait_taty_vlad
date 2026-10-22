@@ -105,6 +105,46 @@
   --fiber: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .09' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .32  0 0 0 0 .14  0 0 0 0 .30  0 0 0 .2 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
 }
 
+/* Theme «Бархат» (Crimson Velvet), from the palette #2C0F12 → #6B1E23:
+   near-black with a burgundy undertone, burgundy accents and glow, parchment
+   paper written in dark burgundy ink. */
+:root[data-theme="velvet"] {
+  --canvas: #0d0405;
+  --canvas-rgb: 13, 4, 5;
+  --ice: #f5e4df;
+  --frost: #ecd3cf;
+  --mist: #d3b4b1;
+  --fog: #a07f7e;
+  --accent: #6b1e23;
+  --accent-hover: #852a30;
+  --accent-rgb: 107, 30, 35;
+  --blood: #b8323b;
+  --blood-rgb: 184, 50, 59;
+  --bone: #f1e1da;
+  --paper: #e9d8cd;
+  --paper-edge: #c9aca1;
+  --paper-rgb: 201, 172, 161;
+  --paper-light-rgb: 255, 246, 240;
+  --paper-shade-rgb: 107, 30, 35;
+  --edge-rgb: 44, 15, 18;
+  --ink: #2c0f12;
+  --ink-2: #3a161a;
+  --ink-soft: #5c2a2f;
+  --ink-mute: #805256;
+  --ink-red: #6b1e23;
+  --void: #1a0709;
+  --hair-rgb: 232, 190, 186;
+  --glass-solid: rgba(28, 9, 11, 0.94);
+  --sky-top: #f6e6e1;
+  --sky-bottom: #c4555c;
+  --beam-rgb: 150, 58, 64;
+  --hairline: rgba(var(--hair-rgb), 0.12);
+  --page-glow:
+    radial-gradient(90% 55% at 12% 0%, rgba(107, 30, 35, 0.5), transparent 70%),
+    radial-gradient(70% 45% at 100% 100%, rgba(107, 30, 35, 0.3), transparent 70%);
+  --fiber: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .09' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .40  0 0 0 0 .12  0 0 0 0 .13  0 0 0 .2 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+}
+
 html {
   scroll-behavior: smooth;
   background: var(--canvas);
@@ -117,7 +157,8 @@ body {
 
 body {
   margin: 0;
-  background: var(--canvas);
+  background-color: var(--canvas);
+  background-image: var(--page-glow, none);
   color: var(--frost);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

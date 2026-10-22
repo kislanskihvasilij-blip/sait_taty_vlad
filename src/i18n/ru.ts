@@ -40,8 +40,9 @@ export const ru: Copy = {
     channel: "Канал",
     otherLang: "EN",
     switchLang: "Switch to English",
-    themeToBloom: "Включить тему «Bloom»",
-    themeToShadow: "Включить тему «Тень»",
+    themeLabel: "Тема",
+    themeSwitchTo: "включить",
+    themeNames: { shadow: "Тень", bloom: "Bloom", velvet: "Бархат" },
   },
   hero: {
     eyebrow: "Тату-эскизы · наброски из блокнота",

@@ -10,6 +10,7 @@ import {
   PenTool,
   Send,
   Skull,
+  Wine,
 } from "lucide-react";
 
 import { AuthorWorld } from "@/components/author-world";
@@ -19,10 +20,12 @@ import { WorkPath } from "@/components/work-path";
 import { SqueezeCarousel } from "@/components/ui/carousel-squeeze";
 import { CHANNEL, PROFILE } from "@/data/links";
 import { useReveal } from "@/hooks/use-reveal";
-import { useTheme } from "@/hooks/use-theme";
-import { useCopy, useLang } from "@/i18n/lang";
+import { useTheme, type Theme } from "@/hooks/use-theme";
+import { prefetchLang, useCopy, useLang } from "@/i18n/lang";
 
 const STYLE_ICONS = [PenTool, Hexagon, Flame, Skull, Flower2, Feather];
+/** The switch shows the theme that is on now. */
+const THEME_ICONS: Record<Theme, typeof Moon> = { shadow: Moon, bloom: Flower2, velvet: Wine };
 
 const delay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
@@ -34,18 +37,21 @@ const CTA =
   "flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white shadow-[0_0_24px_rgba(var(--accent-rgb),0.45)] transition hover:bg-accent-hover";
 
 function Switches() {
-  const { nav } = useCopy();
-  const { toggleLang } = useLang();
-  const { theme, toggleTheme } = useTheme();
-  const isBloom = theme === "bloom";
-  const ThemeIcon = isBloom ? Moon : Flower2;
-  const themeLabel = isBloom ? nav.themeToShadow : nav.themeToBloom;
+  const { nav, quote } = useCopy();
+  const { lang, toggleLang } = useLang();
+  const warmOtherLang = () => prefetchLang(lang === "ru" ? "en" : "ru");
+  const { theme, nextTheme, cycleTheme } = useTheme();
+  const ThemeIcon = THEME_ICONS[theme];
+  // «Тема: Тень — включить «Bloom»» / "Theme: Shadow — switch to “Bloom”".
+  const themeLabel = `${nav.themeLabel}: ${nav.themeNames[theme]} — ${nav.themeSwitchTo} ${quote(nav.themeNames[nextTheme])}`;
 
   return (
     <div className="flex items-center gap-2">
       <button
         type="button"
         onClick={toggleLang}
+        onPointerEnter={warmOtherLang}
+        onFocus={warmOtherLang}
         aria-label={nav.switchLang}
         title={nav.switchLang}
         className="pill grid min-h-10 min-w-10 cursor-pointer place-items-center px-2.5 font-mono text-xs tracking-[0.12em]"
@@ -54,9 +60,8 @@ function Switches() {
       </button>
       <button
         type="button"
-        onClick={toggleTheme}
+        onClick={cycleTheme}
         aria-label={themeLabel}
-        aria-pressed={isBloom}
         title={themeLabel}
         className="pill grid size-10 cursor-pointer place-items-center"
       >
@@ -129,7 +134,7 @@ function Hero() {
         <div className="reveal relative mx-auto w-full max-w-[440px]" style={delay(200)}>
           <div aria-hidden className="absolute -inset-10 rounded-full bg-[radial-gradient(circle,rgba(var(--blood-rgb),0.28),transparent_65%)] blur-2xl" />
           <figure className="breathe relative overflow-hidden rounded-2xl shadow-[inset_0_1px_1px_rgba(var(--hair-rgb),0.2),0_40px_80px_-20px_rgba(0,0,0,0.9)]">
-            <img src="/photos/red.webp" alt={hero.portraitAlt} width={1086} height={1448} fetchPriority="high" className="aspect-[4/5] w-full object-cover" />
+            <img src="/photos/red.webp" alt={hero.portraitAlt} width={880} height={1173} fetchPriority="high" className="aspect-[4/5] w-full object-cover" />
             <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-canvas via-transparent to-transparent" />
             <span aria-hidden className="grain-overlay !opacity-25 !mix-blend-overlay" />
             <figcaption className="absolute bottom-4 left-4 font-mono text-[11px] tracking-[0.2em] text-mist uppercase">
@@ -204,7 +209,7 @@ function About() {
     <section id="about" className="relative mx-auto grid max-w-[1200px] items-center gap-12 px-4 pt-[120px] md:grid-cols-2">
       <div className="reveal relative">
         <figure className="relative overflow-hidden rounded-2xl shadow-[0_40px_80px_-24px_rgba(0,0,0,0.9)]">
-          <img src="/photos/clock.webp" alt={about.photoAlt} width={1024} height={1536} className="aspect-[2/3] max-h-[720px] w-full object-cover object-top" loading="lazy" />
+          <img src="/photos/clock.webp" alt={about.photoAlt} width={960} height={1440} className="aspect-[2/3] max-h-[720px] w-full object-cover object-top" loading="lazy" />
           <div aria-hidden className="shadow-sweep !opacity-70" />
           <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-canvas via-transparent to-canvas/40" />
         </figure>
@@ -268,7 +273,7 @@ function Thoughts() {
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {thoughts.zen.map((z, i) => (
             <figure key={z.img} className="glass reveal group relative overflow-hidden p-0" style={delay(i * 150)}>
-              <img src={z.img} alt="" width={800} height={800} loading="lazy" decoding="async" className="aspect-[16/10] w-full object-cover opacity-80 transition duration-[1.6s] group-hover:scale-105 group-hover:opacity-100" />
+              <img src={z.img} alt="" width={640} height={640} loading="lazy" decoding="async" className="aspect-[16/10] w-full object-cover opacity-80 transition duration-[1.6s] group-hover:scale-105 group-hover:opacity-100" />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-canvas via-canvas/40 to-transparent" />
               <figcaption className="absolute inset-x-4 bottom-4 font-serif text-base leading-snug text-ice italic sm:inset-x-6 sm:bottom-6 sm:text-xl">
                 — {z.text}

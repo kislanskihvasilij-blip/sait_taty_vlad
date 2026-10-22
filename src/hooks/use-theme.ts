@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 
 import { readPref, writePref } from "@/lib/storage";
 
-export type Theme = "shadow" | "bloom";
+/** In the order the switch cycles through them. */
+export const THEMES = ["shadow", "bloom", "velvet"] as const;
+export type Theme = (typeof THEMES)[number];
 
 const STORAGE_KEY = "theme";
 /** Browser-bar colour for each theme, matching --canvas. */
-const BAR_COLOR: Record<Theme, string> = { shadow: "#05060f", bloom: "#0e0a15" };
+const BAR_COLOR: Record<Theme, string> = { shadow: "#05060f", bloom: "#0e0a15", velvet: "#0d0405" };
 
-const isTheme = (value: string | null): value is Theme => value === "shadow" || value === "bloom";
+const isTheme = (value: string | null): value is Theme =>
+  (THEMES as readonly string[]).includes(value ?? "");
+
+const nextOf = (theme: Theme): Theme => THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
 
 export function readStoredTheme(): Theme {
   const saved = readPref(STORAGE_KEY);
@@ -29,6 +34,6 @@ export function useTheme() {
     writePref(STORAGE_KEY, theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme((t) => (t === "shadow" ? "bloom" : "shadow"));
-  return { theme, toggleTheme };
+  const cycleTheme = () => setTheme(nextOf);
+  return { theme, nextTheme: nextOf(theme), cycleTheme };
 }

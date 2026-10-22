@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/unifrakturmaguntia": "^5.3.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.460.0",
     "react": "^19.0.0",

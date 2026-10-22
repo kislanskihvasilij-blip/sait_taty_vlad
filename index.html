@@ -18,8 +18,8 @@
     <meta property="og:title" content="Владислав — авторские тату-эскизы" />
     <meta property="og:description" content="Tribal, Neotribal, Cyber Tribal и тёмная ботаника. Наброски из блокнота и эскизы на заказ." />
     <meta property="og:image" content="/photos/red.webp" />
-    <meta property="og:image:width" content="1086" />
-    <meta property="og:image:height" content="1448" />
+    <meta property="og:image:width" content="880" />
+    <meta property="og:image:height" content="1173" />
     <meta property="og:image:alt" content="Владислав — портрет в красном контровом свете" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Владислав — авторские тату-эскизы" />
@@ -38,12 +38,9 @@
       }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Fonts load without blocking the first paint: on a slow mobile connection
-         the page shows in fallback fonts instead of staying dark. -->
-    <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=UnifrakturMaguntia&display=swap" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=UnifrakturMaguntia&display=swap" /></noscript>
+    <!-- The hero portrait is the largest element on the first screen, but it only
+         exists once the app has rendered. Start its download with the HTML. -->
+    <link rel="preload" as="image" href="/photos/red.webp" type="image/webp" fetchpriority="high" />
   </head>
   <body>
     <div id="root">

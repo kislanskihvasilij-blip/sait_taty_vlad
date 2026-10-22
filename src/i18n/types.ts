@@ -1,4 +1,5 @@
 import type { SqueezeSlide } from "@/components/ui/carousel-squeeze";
+import type { Theme } from "@/hooks/use-theme";
 
 export type Lang = "ru" | "en";
 
@@ -62,8 +63,11 @@ export interface Copy {
     /** Short code of the language the switch leads to. */
     otherLang: string;
     switchLang: string;
-    themeToBloom: string;
-    themeToShadow: string;
+    /** «Тема» — prefix of the switch's label. */
+    themeLabel: string;
+    /** Verb for the switch: «включить» / "switch to". */
+    themeSwitchTo: string;
+    themeNames: Record<Theme, string>;
   };
   hero: {
     eyebrow: string;
