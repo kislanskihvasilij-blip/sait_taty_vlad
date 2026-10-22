@@ -106,6 +106,9 @@ export type SqueezeCarouselProps = {
   accent?: string;
   accentForeground?: string;
   label?: string;
+  /** Screen-reader names of the two arrows. */
+  prevLabel?: string;
+  nextLabel?: string;
   panelClassName?: string;
   /** How a picture fills its panel. `contain` keeps portrait sketches whole. Default `cover`. */
   fit?: "cover" | "contain";
@@ -126,9 +129,11 @@ export function SqueezeCarousel({
   autoplay = false,
   interval = 6000,
   controls = true,
-  accent = "#663af3",
+  accent = "var(--accent)",
   accentForeground = "#ffffff",
   label = "Featured",
+  prevLabel = "Previous",
+  nextLabel = "Next",
   panelClassName,
   fit = "cover",
   className,
@@ -291,8 +296,8 @@ export function SqueezeCarousel({
     >
       {controls && count > 1 && (
         <div className="relative z-10 mb-4 flex justify-end gap-3">
-          <Arrow back label="Назад" onClick={() => step(-1)} />
-          <Arrow label="Вперёд" onClick={() => step(1)} />
+          <Arrow back label={prevLabel} onClick={() => step(-1)} />
+          <Arrow label={nextLabel} onClick={() => step(1)} />
         </div>
       )}
 
@@ -344,7 +349,7 @@ export function SqueezeCarousel({
                 onClick={() => col > 0 && step(col)}
                 className={cn(
                   "paper-sheet relative isolate h-full shrink-0 cursor-pointer overflow-hidden p-0",
-                  "outline-none focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#05060f]",
+                  "outline-none focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)] focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
                   panelClassName,
                 )}
                 style={{
@@ -363,7 +368,7 @@ export function SqueezeCarousel({
                 <span aria-hidden className="grain-overlay" />
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[#05060f]"
+                  className="pointer-events-none absolute inset-0 bg-canvas"
                   style={{
                     opacity: shadeOf(col),
                     transition: `opacity var(--sq-ms) var(--sq-ease)`,
@@ -377,7 +382,7 @@ export function SqueezeCarousel({
                     style={{
                       opacity: front ? 1 : 0,
                       transition: `opacity var(--sq-ms) var(--sq-ease)`,
-                      backgroundImage: "linear-gradient(to top, rgb(5 6 15 / 0.75), transparent)",
+                      backgroundImage: "linear-gradient(to top, rgba(var(--canvas-rgb), 0.75), transparent)",
                     }}
                   >
                     {slide.overlay}
@@ -406,8 +411,8 @@ export function SqueezeCarousel({
               }}
             >
               <p className="max-w-[46rem] text-[15px] leading-[1.6] text-balance @lg:text-[17px]">
-                <span className="text-[#d8ecf8]">{slide.title}</span>{" "}
-                {slide.description && <span className="text-[#9da7ba]">{slide.description}</span>}
+                <span className="text-ice">{slide.title}</span>{" "}
+                {slide.description && <span className="text-fog">{slide.description}</span>}
               </p>
 
               {slide.action && <Action slide={slide} shown={shown} />}
@@ -493,8 +498,8 @@ function Action({ slide, shown }: { slide: SqueezeSlide; shown: boolean }) {
   const dress = cn(
     "group/sq-action inline-flex shrink-0 cursor-pointer items-center gap-2 self-start rounded-full",
     "bg-[var(--sq-fill)] px-5 py-2.5 text-sm font-medium text-[var(--sq-on-fill)]",
-    "shadow-[0_0_24px_rgba(102,58,243,0.4)] transition-opacity hover:opacity-85 outline-none",
-    "focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#05060f]",
+    "shadow-[0_0_24px_rgba(var(--accent-rgb),0.4)] transition-opacity hover:opacity-85 outline-none",
+    "focus-visible:ring-2 focus-visible:ring-[var(--sq-fill)] focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
   );
 
   if (slide.href) {

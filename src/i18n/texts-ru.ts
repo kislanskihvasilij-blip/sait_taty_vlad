@@ -1,33 +1,17 @@
 // Text portfolio, transcribed verbatim from «Портфолио Владислава» (PDF).
 // Poems keep their line breaks; prose is split into paragraphs.
 
-export type TextGroup = "author" | "commercial";
+import type { TextsCopy, TextWork } from "./types";
 
-export interface TextWork {
-  id: string;
-  group: TextGroup;
-  /** «Пример 1» etc. */
-  label: string;
-  /** Kind of text, shown above the title. */
-  genre: string;
-  title: string;
-  task: string;
-  /** Poem: one entry per line, "" marks a stanza break. Prose: one entry per paragraph. */
-  body: string[];
-  isPoem: boolean;
-  /** «Что это показывает для коммерческих текстов». */
-  takeaway?: string;
-}
-
-export const TEXTS_INTRO =
+const INTRO =
   "Я создаю тексты, которые помогают брендам привлекать внимание, вовлекать аудиторию и говорить с читателем живым языком. Работаю с настроением, интонацией и смыслом — от коротких выразительных фраз до объёмных текстов. Этот подход применяю в постах, описаниях, статьях и сторителлинге.";
 
-export const TEXT_GROUPS: Record<TextGroup, string> = {
+const GROUPS: TextsCopy["groups"] = {
   author: "Авторские работы",
   commercial: "Коммерческие примеры",
 };
 
-export const TEXT_WORKS: TextWork[] = [
+const WORKS: TextWork[] = [
   {
     id: "prosti",
     group: "author",
@@ -257,3 +241,16 @@ export const TEXT_WORKS: TextWork[] = [
     body: ["Остановись. Выдохни. Будь здесь."],
   },
 ];
+
+export const textsRu: TextsCopy = {
+  eyebrow: "Тексты · стихи · копирайтинг",
+  title: "Слова, написанные тенью",
+  intro: INTRO,
+  tablist: "Текстовые работы",
+  groups: GROUPS,
+  works: WORKS,
+  readMore: "Читать целиком",
+  collapse: "Свернуть",
+  taskLabel: "Задача",
+  takeawayLabel: "Что это показывает для коммерческих текстов",
+};
